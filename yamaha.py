@@ -71,12 +71,12 @@ class Yamaha:
 		self.put("INP", input)
 
 	def getSoundProgram(self):
-		self.get("SOUNDPRG")
+		return self.get("SOUNDPRG")
 	def setSoundProgram(self, program):
 		self.put("SOUNDPRG", program)
 
 usage = "Usage: " + sys.argv[0] + """ [-h] [-a HOSTNAME] [-p PORT] [-u UNIT] -c COMMAND [PARAMETERS]
-Sends YMCA commands to Yamaha AV receivers.  Tested with an RX-V675, but should work with many others.
+Sends YNCA commands to Yamaha AV receivers.  Tested with an RX-V675, but should work with many others.
 
 Class includes member functions for common operations to ease integration with other scripts.
 
@@ -105,7 +105,7 @@ if __name__ == "__main__":
 	if len(args) == 0:
 		print usage
 		sys.exit(1)
-	command = args[0]
+	command = args[0].upper()
 	arguments = ' '.join(args[1:])
 	for opt, arg in opts:
 		if opt in ("-h"):
